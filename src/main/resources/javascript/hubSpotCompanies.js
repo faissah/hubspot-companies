@@ -6,7 +6,6 @@ $( document ).ready(function() {
             type: 'GET',
             dataType: 'json',
             success: function(data) {
-                alert(data.results);
                 var table = new Tabulator(currentID, {
                     data:cleanJSON(data.results), //assign data to table
                     autoColumns:true, //create columns from data field names

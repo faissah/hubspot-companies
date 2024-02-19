@@ -22,5 +22,6 @@
 <template:addResources resources="tabulator.min.js" type="javascript"/>
 <template:addResources resources="hubSpotCompanies.js" type="javascript"/>
 <template:addResources resources="tabulator_bootstrap3.css" type="css"/>
-
+<c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
+<h2>${title}</h2>
 <div id="my${currentNode.identifier}" class="hubSpotCompanies" data-url="${url.base}${currentNode.path}"></div>
