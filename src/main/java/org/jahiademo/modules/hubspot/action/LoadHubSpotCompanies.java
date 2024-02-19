@@ -95,7 +95,7 @@ public class LoadHubSpotCompanies extends Action {
                     + "                {\n" + " \"propertyName\": \"partner__reseller_\",\n   \"operator\": \"EQ\",\n" + " \"value\": "
                     + "\""+partnerName+"\"\n"
                     + "                }\n" + "            ]\n" + "        }\n" + "    ],\n" + "    \"limit\": 10,\n"
-                    + " \"properties\": [\"name\",\"partner__reseller_\",\"the_value_of_the_account\",\"stage_of_the_account\"],\n" + "  \"after\": 0\n"
+                    + " \"properties\": [\"name\",\"partner__reseller_\",\"the_value_of_the_account\",\"stage_of_the_account\",\"commission_rate\"],\n" + "  \"after\": 0\n"
                     + "}";
             logger.info(jsonInputString);
             try(OutputStream os = http.getOutputStream()) {

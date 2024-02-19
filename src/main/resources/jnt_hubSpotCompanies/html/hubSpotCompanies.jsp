@@ -18,10 +18,12 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
+<jcr:node var="user" path="${renderContext.user.localPath}"/>
+<c:set var="partnerName" value="${user.properties['j:organization'].string}"/>
 
 <template:addResources resources="tabulator.min.js" type="javascript"/>
 <template:addResources resources="hubSpotCompanies.js" type="javascript"/>
-<template:addResources resources="tabulator_bootstrap3.css" type="css"/>
+<template:addResources resources="tabulator_bootstrap5.css" type="css"/>
 <c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
-<h2>${title}</h2>
+<h2>${title} - ${partnerName}</h2>
 <div id="my${currentNode.identifier}" class="hubSpotCompanies" data-url="${url.base}${currentNode.path}"></div>
