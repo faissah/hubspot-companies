@@ -19,4 +19,4 @@
 <c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
 <c:set var="description" value="${currentNode.properties['jcr:description'].string}"/>
 <h3>${title}</h3>
-<canvas id="chart-${currentNode.identifier}" class="bar-chart" data-url="${url.base}${currentNode.path}"></canvas>
+<canvas id="chart-${currentNode.identifier}" class="polar-chart" data-url="${url.base}${currentNode.path}"></canvas>
