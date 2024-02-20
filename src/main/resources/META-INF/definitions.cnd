@@ -9,3 +9,6 @@
 
 [jnt:hubSpotCompanies] > jnt:content, jmix:queryContent, mix:title
 
+[jnt:hubSpotPipeGraph] > jnt:content, jmix:queryContent, mix:title
+
+
