@@ -12,11 +12,15 @@
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
-
+<template:addResources resources="hubSpotCompanies.css" type="css"/>
 <template:addResources resources="chart.js" type="javascript"/>
 <template:addResources resources="chart-script.js" type="javascript"/>
 
 <c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
 <c:set var="description" value="${currentNode.properties['jcr:description'].string}"/>
-<h3>${title}</h3>
-<canvas id="chart-${currentNode.identifier}" class="doughnut-chart" data-url="${url.base}${currentNode.path}"></canvas>
+<c:set var="chartLabel" value="${currentNode.properties['chartLabel'].string}"/>
+<div class="shadow-box">
+    <h3>${title} - <c:out value="${fn:replace(chartLabel, '_', ' ')}"/></h3>
+    <canvas id="chart-${currentNode.identifier}" class="doughnut-chart" data-url="${url.base}${currentNode.path}"
+            data-param="${chartLabel}"></canvas>
+</div>

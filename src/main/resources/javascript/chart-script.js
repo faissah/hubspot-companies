@@ -1,7 +1,19 @@
+function formatTitle(str) {
+    // Split the string into an array of words using the dash as a delimiter
+    let words = str.split('_');
+
+    // Capitalize the first word
+    words[0] = words[0].charAt(0).toUpperCase() + words[0].slice(1);
+
+    // Join the words back together with spaces
+    return words.join(' ');
+}
+
 $(document).ready(function () {
     $(".bar-chart").each(function () {
         var currentID = "#" + $(this).attr("id");
         var dataSourceUrl = $(this).data("url") + ".loadCompanies.do";
+        var myParam = $(this).data("param"); // Access the parameter
 
         jQuery.ajax({
             url: dataSourceUrl,
@@ -11,7 +23,7 @@ $(document).ready(function () {
                 let stageValues = {};
 
                 data.results.forEach(item => {
-                    const stage = item.properties.stage_of_the_account;
+                    const stage = item.properties[myParam];
                     const value = parseInt(item.properties.the_value_of_the_account, 10);
 
                     if (stageValues[stage]) {
@@ -30,7 +42,7 @@ $(document).ready(function () {
                     data: {
                         labels: labels, // Labels for the X-axis
                         datasets: [{
-                            label: 'Current Pipe per Stage', // Legend label
+                            label: 'Current Pipe per '+formatTitle(myParam), // Legend label
                             data: values, // Your values
                             backgroundColor: [
                                 // Define colors for each bar (optional)
@@ -67,6 +79,7 @@ $(document).ready(function () {
     $(".doughnut-chart").each(function () {
         var currentID = "#" + $(this).attr("id");
         var dataSourceUrl = $(this).data("url") + ".loadCompanies.do";
+        var myParam = $(this).data("param"); // Access the parameter
 
         jQuery.ajax({
             url: dataSourceUrl,
@@ -76,7 +89,7 @@ $(document).ready(function () {
                 let stageValues = {};
 
                 data.results.forEach(item => {
-                    const stage = item.properties.stage_of_the_account;
+                    const stage = item.properties[myParam];
                     const value = parseInt(item.properties.the_value_of_the_account, 10);
 
                     if (stageValues[stage]) {
@@ -100,7 +113,7 @@ $(document).ready(function () {
                     data: {
                         labels: labels, // Labels for the X-axis
                         datasets: [{
-                            label: 'Current Pipe per Stage', // Legend label
+                            label: 'Current Pipe per '+formatTitle(myParam), // Legend label
                             data: values, // Your values
                             backgroundColor: backgroundColors,
                             hoverOffset: 4
@@ -129,6 +142,7 @@ $(document).ready(function () {
     $(".pie-chart").each(function () {
         var currentID = "#" + $(this).attr("id");
         var dataSourceUrl = $(this).data("url") + ".loadCompanies.do";
+        var myParam = $(this).data("param"); // Access the parameter
 
         jQuery.ajax({
             url: dataSourceUrl,
@@ -138,7 +152,7 @@ $(document).ready(function () {
                 let stageValues = {};
 
                 data.results.forEach(item => {
-                    const stage = item.properties.stage_of_the_account;
+                    const stage = item.properties[myParam];
                     const value = parseInt(item.properties.the_value_of_the_account, 10);
 
                     if (stageValues[stage]) {
@@ -162,7 +176,7 @@ $(document).ready(function () {
                     data: {
                         labels: labels, // Labels for the X-axis
                         datasets: [{
-                            label: 'Current Pipe per Stage', // Legend label
+                            label: 'Current Pipe per '+formatTitle(myParam), // Legend label
                             data: values, // Your values
                             backgroundColor: backgroundColors,
                             hoverOffset: 4
@@ -191,6 +205,7 @@ $(document).ready(function () {
     $(".polar-chart").each(function () {
         var currentID = "#" + $(this).attr("id");
         var dataSourceUrl = $(this).data("url") + ".loadCompanies.do";
+        var myParam = $(this).data("param"); // Access the parameter
 
         jQuery.ajax({
             url: dataSourceUrl,
@@ -200,7 +215,7 @@ $(document).ready(function () {
                 let stageValues = {};
 
                 data.results.forEach(item => {
-                    const stage = item.properties.stage_of_the_account;
+                    const stage = item.properties[myParam];
                     const value = parseInt(item.properties.the_value_of_the_account, 10);
 
                     if (stageValues[stage]) {
@@ -224,7 +239,7 @@ $(document).ready(function () {
                     data: {
                         labels: labels, // Labels for the X-axis
                         datasets: [{
-                            label: 'Current Pipe per Stage', // Legend label
+                            label: 'Current Pipe per '+formatTitle(myParam), // Legend label
                             data: values, // Your values
                             backgroundColor: backgroundColors,
                             hoverOffset: 4

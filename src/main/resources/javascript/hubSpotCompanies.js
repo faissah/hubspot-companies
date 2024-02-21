@@ -30,6 +30,7 @@ $(document).ready(function () {
                             }, hozAlign: "center"
                         },
                         {title: "Stage", field: "stage_of_the_account"},
+                        {title: "Insurance Product", field: "insurance_product"},
                         {title: "Last Update", field: "hs_lastmodifieddate", mutator: function (value, data) {
                                 const isoDateString = value;
                                 const date = new Date(isoDateString);

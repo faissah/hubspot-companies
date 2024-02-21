@@ -2,13 +2,20 @@
 <jnt = 'http://www.jahia.org/jahia/nt/1.0'>
 <mix = 'http://www.jcp.org/jcr/mix/1.0'>
 
+[jmix:hubSpotConnection] > jmix:droppableContent, jmix:visibleInContentTree, jmix:editorialContent mixin
+
 [jmix:HubSpotAPIKey] mixin
  extends = jnt:virtualsite
  itemtype = content
  - HubSpotAPIKey (string)
 
-[jnt:hubSpotCompanies] > jnt:content, jmix:queryContent, mix:title
+[jnt:hubSpotCompanies] > jnt:content, jmix:hubSpotConnection, mix:title
 
-[jnt:hubSpotPipeGraph] > jnt:content, jmix:queryContent, mix:title
+[jnt:hubSpotPipeGraph] > jnt:content, jmix:hubSpotConnection, mix:title
+- chartLabel (string, choicelist[resourceBundle]) = 'stage_of_the_account' mandatory autocreated indexed=no < 'stage_of_the_account', 'insurance_product'
 
-
+[jnt:brokerContent] > jnt:content, jmix:mainResource, jmix:hubSpotConnection, seumix:linkTo, mix:title
+ - jcr:title (string) internationalized mandatory
+ - body (string, richtext[ckeditor.toolbar='Tinny',ckeditor.customConfig='$context/modules/industrial/javascript/ckeditor/config/body.js']) internationalized
+ - image (weakreference, picker[type='image']) mandatory
+ - date (date) = now()
